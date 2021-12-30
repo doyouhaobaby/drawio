@@ -112,6 +112,14 @@ window.mxLanguage = window.mxLanguage || (function()
 
 // Add new languages here. First entry is translated to [Automatic]
 // in the menu defintion in Diagramly.js.
+// 保留三种语言
+// @secondary development
+window.mxLanguageMap = {
+    'i18n': '',
+    'zh' : '简体中文',
+	'zh-tw' : '繁體中文',
+    'en' : 'English',
+};
 window.mxLanguageMap = window.mxLanguageMap ||
 {
 	'i18n': '',
