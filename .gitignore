@@ -3,3 +3,21 @@ build
 classes
 node_modules
 .vscode/settings.json
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# drawio file
+/public/drawio/*
+/public/files/*
+/public/temp/*
+
+# dependencies
+node_modules
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
