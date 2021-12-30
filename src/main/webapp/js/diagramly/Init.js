@@ -415,6 +415,14 @@ function setCurrentXml(data, filename)
 	}
 })();
 
+// 去掉 Google 和 Dropbox 等
+// @secondary development
+urlParams['gapi'] = '0';
+urlParams['db'] = '0';
+urlParams['od'] = '0';
+urlParams['gh'] = '0';
+urlParams['gl'] = '0';
+
 // Enables offline mode
 if (urlParams['offline'] == '1' || urlParams['demo'] == '1' || 
 		urlParams['stealth'] == '1' || urlParams['local'] == '1' || urlParams['lockdown'] == '1')
