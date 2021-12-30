@@ -262,6 +262,15 @@
 				mxForceIncludes = true;
 			}
 
+            // 开发模板
+            // @secondary development
+            if (location.hostname == 'localhost' || location.hostname == '127.0.0.1') {
+                drawDevUrl = `http://${location.host}/`;
+                geBasePath = `http://${location.host}/js/grapheditor`;
+                mxBasePath = `http://${location.host}/mxgraph`;
+                mxForceIncludes = true;
+            }
+
 			mxscript(drawDevUrl + 'js/PreConfig.js');
 			mxscript(drawDevUrl + 'js/diagramly/Init.js');
 			mxscript(geBasePath + '/Init.js');

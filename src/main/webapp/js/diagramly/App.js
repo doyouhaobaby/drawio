@@ -3678,6 +3678,17 @@ App.prototype.showSplash = function(force)
 			this.showSplash();
 		}));
 	}
+
+    // 编辑模式
+    // @secondary development
+	else if (urlParams['id']) {
+	    const mockFile = {
+            title: 'hello.drawio',
+            data: '<mxfile host="localhost" modified="2021-12-30T12:53:56.892Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="46esnydGDerVm9QwKejP" version="@DRAWIO-VERSION@" type="device"><diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">1ZVNU6QwEIZ/TY5TxYfCcBRE98O1SlGnPG1lhxbYDTRmmmHw1xtMGIbFckurPOyFSj9puum304G5Ubk7l7zOf2AKgjlWumPuKXOc4MhTzx50Ghx7Rxpkskg1skeQFE9goGVoU6SwmTgSoqCinsI1VhWsacK4lNhO3R5QTLPWPIMZSNZczOmqSCnXdOn4I/8CRZYPmW0v0DslH5xNJZucp9geIDdmbiQRSa/KXQSi127QZfW1W4mLP975t6vNI78Nv99c3i10sLP3vLIvQUJFHw798yGiyyufL+79JPmFN1l0XS5cHXrLRWP0MrVSNwgIqdLTmCgpxwwrLuKRhhKbKoU+jaWs0ecCsVbQVvA3EHXmcPCGUKGcSmF2dc4+0V89+0fBxm+DjVzDG1UO547LDOgNP2ffVTUNgCWQ7NR7EgSnYjv9OG7OZbb3G7VXCyP/O1phz1sRH7MwYkurX5z4bBnOmjNK3+vY5gVBUvMXMVo1zq/JvAVJsPuA0HNhTBTHNxNiroilMdtx3uxhiPKDWfOsT5LSeUVKn4UhC1wWeyw4ZcHZ/yHl/vL5BC2VOV5eL3sHfwA3fgY=</diagram></mxfile>'
+        }
+		const file = new LocalFile(this, mockFile.data, mockFile.title, this.mode);
+		this.loadFile(`-1`, true, file);
+	}
 	else if (!mxClient.IS_CHROMEAPP && (this.mode == null || force))
 	{
 		var rowLimit = (serviceCount == 4) ? 2 : 3;
@@ -6210,6 +6221,15 @@ App.prototype.save = function(name, done)
 			{
 				file.saveAs(name, success, error)
 			}
+
+            // 发送文件
+            // @secondary development
+            window.parent.postMessage({
+                act: 'change',
+                params: {
+                    xml: file.getData()
+                }
+            }, '*')
 		}
 		catch (err)
 		{
