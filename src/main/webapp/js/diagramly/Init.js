@@ -286,7 +286,13 @@ window.uiTheme = window.uiTheme || (function()
 		urlParams['sketch'] = '1';
 		ui = 'min';
 	}
-		
+
+    if (!ui) {
+        // 默认主题
+        // @secondary development
+        ui = 'atlas';
+    }
+
 	return ui;
 })();
 
