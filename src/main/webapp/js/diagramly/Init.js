@@ -106,6 +106,12 @@ window.mxLanguage = window.mxLanguage || (function()
 			}
 		}
 	}
+
+    if (!lang) {
+        // 默认语言
+        // @secondary development
+        lang = 'zh';
+    }
 	
 	return lang;
 })();
