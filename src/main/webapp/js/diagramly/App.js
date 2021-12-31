@@ -3688,11 +3688,13 @@ App.prototype.showSplash = function(force)
     // 编辑模式
     // @secondary development
 	else if (urlParams['edit']) {
-        if (urlParams['edit_data']) {
+        if (urlParams['edit_data'] && urlParams['edit_data'].data) {
             var title = urlParams['edit_data'].title+'.drawio';
             var data = urlParams['edit_data'].data;
             const file = new LocalFile(this, data, title, this.mode);
             this.loadFile(`-1`, true, file);
+        } else {
+            this.showSplash(); 
         }
 	}
 	else if (!mxClient.IS_CHROMEAPP && (this.mode == null || force))
