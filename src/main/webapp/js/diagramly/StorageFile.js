@@ -23,7 +23,7 @@ mxUtils.extend(StorageFile, DrawioFile);
 /**
  * Sets the delay for autosave in milliseconds. Default is 2000.
  */
-StorageFile.prototype.autosaveDelay = 2000;
+StorageFile.prototype.autosaveDelay = 8000;
 
 /**
  * Sets the delay for autosave in milliseconds. Default is 20000.
@@ -243,6 +243,16 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
 				
 				this.setShadowModified(false);
 				var data = this.getData();
+
+                // 发送文件
+                // @secondary development
+                window.parent.postMessage({
+                    act: 'change',
+                    params: {
+                        data: data,
+                        title: this.title
+                    }
+                }, '*')
 				
 				this.ui.setDatabaseItem(null, [{
 						title: this.title,
@@ -263,16 +273,6 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
 							error();
 						}
 					}), ['filesInfo', 'files']);
-
-                // 发送文件
-                // @secondary development
-                window.parent.postMessage({
-                    act: 'change',
-                    params: {
-                        data: data,
-                        title: this.title
-                    }
-                }, '*')
 			}
 			catch (e)
 			{
