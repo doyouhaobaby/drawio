@@ -422,7 +422,7 @@ urlParams['db'] = '0';
 urlParams['od'] = '0';
 urlParams['gh'] = '0';
 urlParams['gl'] = '0';
-urlParams['browser'] = '0';
+urlParams['noDevice'] = '1';
 
 // Enables offline mode
 if (urlParams['offline'] == '1' || urlParams['demo'] == '1' || 

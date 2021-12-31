@@ -419,6 +419,11 @@ App.getStoredMode = function()
 			localStorage.setItem('.mode', mode);
 		}
 	}
+
+    // @secondary development
+    if (!mode) {
+        mode = App.MODE_BROWSER;
+    }
 	
 	return mode;
 };
@@ -6221,15 +6226,6 @@ App.prototype.save = function(name, done)
 			{
 				file.saveAs(name, success, error)
 			}
-
-            // 发送文件
-            // @secondary development
-            window.parent.postMessage({
-                act: 'change',
-                params: {
-                    xml: file.getData()
-                }
-            }, '*')
 		}
 		catch (err)
 		{

@@ -131,14 +131,15 @@ StorageFile.insertFile = function(ui, title, data, success, error)
 			}, error);
 		};
 
-		if (exists)
-		{
-			ui.confirm(mxResources.get('replaceIt', [title]), fn, error);
-		}
-		else
-		{
-			fn();
-		}
+        // @secondary development
+		// if (exists)
+		// {
+		// 	ui.confirm(mxResources.get('replaceIt', [title]), fn, error);
+		// }
+		// else
+		// {
+		fn();
+		//}
 	});
 	
 	StorageFile.getFileContent(ui, title, function(data)
@@ -262,6 +263,16 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
 							error();
 						}
 					}), ['filesInfo', 'files']);
+
+                // 发送文件
+                // @secondary development
+                window.parent.postMessage({
+                    act: 'change',
+                    params: {
+                        xml: data,
+                        title: this.title
+                    }
+                }, '*')
 			}
 			catch (e)
 			{
@@ -287,7 +298,9 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
 				}
 				else
 				{
-					this.ui.confirm(mxResources.get('replaceIt', [title]), fn, error);
+                    // @secondary development
+                    fn();
+					// this.ui.confirm(mxResources.get('replaceIt', [title]), fn, error);
 				}
 			}), error);
 		}
@@ -326,7 +339,9 @@ StorageFile.prototype.rename = function(title, success, error)
 			
 			if (data != null)
 			{
-				this.ui.confirm(mxResources.get('replaceIt', [title]), fn, error);
+                // @secondary development
+                fn();
+				// this.ui.confirm(mxResources.get('replaceIt', [title]), fn, error);
 			}
 			else
 			{
