@@ -345,6 +345,25 @@
 			})();
 		}
 
+        checkAllLoaded();
+
+        window.parent.postMessage({
+            act: 'ready',
+            params: {}
+        }, '*');
+
+        window.addEventListener("message", function(event){
+            var data = event.data;
+            switch (data.act) {
+                case 'setData':
+                    urlParams['edit_data'] = {
+                        data: data.params.data,
+                        title: data.params.title,
+                    }
+                    break;
+            }
+        });
+
 		// Adds basic error handling
 		window.onerror = function()
 		{

@@ -269,7 +269,7 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
                 window.parent.postMessage({
                     act: 'change',
                     params: {
-                        xml: data,
+                        data: data,
                         title: this.title
                     }
                 }, '*')

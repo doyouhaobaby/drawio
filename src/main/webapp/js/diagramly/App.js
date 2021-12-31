@@ -652,7 +652,8 @@ App.main = function(callback, createUi)
 				if (CryptoJS.MD5(content).toString() != '0fed8c83fc7187e0b39310c4aa3e6d63')
 				{
 					console.log('Change bootstrap script MD5 in the previous line:', CryptoJS.MD5(content).toString());
-					alert('[Dev] Bootstrap script change requires update of CSP');
+                    // @secondary development
+					//alert('[Dev] Bootstrap script change requires update of CSP');
 				}
 			}
 			
@@ -3686,13 +3687,13 @@ App.prototype.showSplash = function(force)
 
     // 编辑模式
     // @secondary development
-	else if (urlParams['id']) {
-	    const mockFile = {
-            title: 'hello.drawio',
-            data: '<mxfile host="localhost" modified="2021-12-30T12:53:56.892Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="46esnydGDerVm9QwKejP" version="@DRAWIO-VERSION@" type="device"><diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">1ZVNU6QwEIZ/TY5TxYfCcBRE98O1SlGnPG1lhxbYDTRmmmHw1xtMGIbFckurPOyFSj9puum304G5Ubk7l7zOf2AKgjlWumPuKXOc4MhTzx50Ghx7Rxpkskg1skeQFE9goGVoU6SwmTgSoqCinsI1VhWsacK4lNhO3R5QTLPWPIMZSNZczOmqSCnXdOn4I/8CRZYPmW0v0DslH5xNJZucp9geIDdmbiQRSa/KXQSi127QZfW1W4mLP975t6vNI78Nv99c3i10sLP3vLIvQUJFHw798yGiyyufL+79JPmFN1l0XS5cHXrLRWP0MrVSNwgIqdLTmCgpxwwrLuKRhhKbKoU+jaWs0ecCsVbQVvA3EHXmcPCGUKGcSmF2dc4+0V89+0fBxm+DjVzDG1UO547LDOgNP2ffVTUNgCWQ7NR7EgSnYjv9OG7OZbb3G7VXCyP/O1phz1sRH7MwYkurX5z4bBnOmjNK3+vY5gVBUvMXMVo1zq/JvAVJsPuA0HNhTBTHNxNiroilMdtx3uxhiPKDWfOsT5LSeUVKn4UhC1wWeyw4ZcHZ/yHl/vL5BC2VOV5eL3sHfwA3fgY=</diagram></mxfile>'
+	else if (urlParams['edit']) {
+        if (urlParams['edit_data']) {
+            var title = urlParams['edit_data'].title+'.drawio';
+            var data = urlParams['edit_data'].data;
+            const file = new LocalFile(this, data, title, this.mode);
+            this.loadFile(`-1`, true, file);
         }
-		const file = new LocalFile(this, mockFile.data, mockFile.title, this.mode);
-		this.loadFile(`-1`, true, file);
 	}
 	else if (!mxClient.IS_CHROMEAPP && (this.mode == null || force))
 	{
