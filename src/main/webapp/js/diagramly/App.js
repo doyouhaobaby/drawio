@@ -665,7 +665,8 @@ App.main = function(callback, createUi)
 				if (CryptoJS.MD5(content).toString() != 'd53805dd6f0bbba2da4966491ca0a505')
 				{
 					console.log('Change main script MD5 in the previous line:', CryptoJS.MD5(content).toString());
-					alert('[Dev] Main script change requires update of CSP');
+                    // @secondary development
+					//alert('[Dev] Main script change requires update of CSP');
 				}
 			}
 		}
@@ -3648,8 +3649,18 @@ App.prototype.checkDrafts = function()
  * @param {number} dx X-coordinate of the translation.
  * @param {number} dy Y-coordinate of the translation.
  */
-App.prototype.showSplash = function(force)
+App.prototype.showSplash = function(force, editData)
 {
+    // 编辑模式
+    // @secondary development
+	if (editData && editData.data) {
+        const title = editData.title+'.drawio';
+        const data = editData.data;
+        const file = new LocalFile(this, data, title, App.MODE_BROWSER);
+        this.loadFile(`-1`, true, file);
+        return;
+	}
+
 	//Splash dialog shouldn't be shownn when running without a file menu
 	if (urlParams['noFileMenu'] == '1')
 	{
@@ -3685,18 +3696,6 @@ App.prototype.showSplash = function(force)
 		}));
 	}
 
-    // 编辑模式
-    // @secondary development
-	else if (urlParams['edit']) {
-        if (urlParams['edit_data'] && urlParams['edit_data'].data) {
-            var title = urlParams['edit_data'].title+'.drawio';
-            var data = urlParams['edit_data'].data;
-            const file = new LocalFile(this, data, title, this.mode);
-            this.loadFile(`-1`, true, file);
-        } else {
-            this.showSplash(); 
-        }
-	}
 	else if (!mxClient.IS_CHROMEAPP && (this.mode == null || force))
 	{
 		var rowLimit = (serviceCount == 4) ? 2 : 3;

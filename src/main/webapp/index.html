@@ -53,6 +53,9 @@
 			
 			return result;
 		})();
+
+        // @secondary development
+        urlParams['noFileMenu'] = '1';
 		
 		// Forces CDN caches by passing URL parameters via URL hash
 		if (window.location.hash != null && window.location.hash.substring(0, 2) == '#P')
@@ -229,13 +232,24 @@
 			// ignored
 		}
 
+        // @secondary development 
+        var app = null;
+        var mainCompletedCallback = function (ui) {
+            app = ui;
+
+            window.parent.postMessage({
+                act: 'ready',
+                params: {}
+            }, '*');
+        };
+
 		var mxScriptsLoaded = false, mxWinLoaded = false;
 		
 		function checkAllLoaded()
 		{
 			if (mxScriptsLoaded && mxWinLoaded)
 			{
-				App.main();				
+				App.main(mainCompletedCallback);				
 			}
 		};
 		
@@ -345,21 +359,15 @@
 			})();
 		}
 
-        checkAllLoaded();
-
-        window.parent.postMessage({
-            act: 'ready',
-            params: {}
-        }, '*');
-
         window.addEventListener("message", function(event){
             var data = event.data;
             switch (data.act) {
                 case 'setData':
-                    urlParams['edit_data'] = {
+                    const editData = {
                         data: data.params.data,
                         title: data.params.title,
                     }
+                    app.showSplash(true, editData);
                     break;
             }
         });
@@ -494,7 +502,7 @@ else
 	}
 	else
 	{
-		App.main();
+		App.main(mainCompletedCallback);
 	}
 }
 </script>
