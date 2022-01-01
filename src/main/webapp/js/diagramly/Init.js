@@ -422,7 +422,6 @@ urlParams['db'] = '0';
 urlParams['od'] = '0';
 urlParams['gh'] = '0';
 urlParams['gl'] = '0';
-urlParams['noDevice'] = '1';
 urlParams['drafts'] = '0';
 
 // Enables offline mode
