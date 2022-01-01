@@ -3653,17 +3653,21 @@ App.prototype.showSplash = function(force, editData)
 {
     // 编辑模式
     // @secondary development
-	if (editData) {
+    if (urlParams['edit'] == '1') {
+        if (!editData) {
+            return;
+        }
+
         const title = editData.title+'.drawio';
         var data = editData.data;
-        // 图不存在拆入空白
+        // 图不存在填入空白图像
         if (!data) {
             data = '<mxfile host="localhost" modified="2022-01-01T02:57:46.924Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" version="@DRAWIO-VERSION@" etag="fTCDb8V17SyX5HVrVcOn" type="browser"><diagram id="YjI2SztcISEiFn0bZooj">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>';
         }
-        const file = new LocalFile(this, data, title, App.MODE_BROWSER);
+        const file = new StorageFile(this, data, title);
         this.loadFile(`-1`, true, file);
         return;
-	}
+    }
 
 	//Splash dialog shouldn't be shownn when running without a file menu
 	if (urlParams['noFileMenu'] == '1')
