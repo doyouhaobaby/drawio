@@ -5850,7 +5850,8 @@ App.prototype.updateButtonContainer = function()
 		}
 		
 		// Share
-		if (urlParams['embed'] != '1' && this.getServiceName() == 'draw.io' &&
+        // @secondary development
+		if (0 && urlParams['embed'] != '1' && this.getServiceName() == 'draw.io' &&
 			!mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
 			!this.isOfflineApp())
 		{
