@@ -235,16 +235,19 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
 					this.setModified(this.getShadowModified());
 					this.contentChanged();
 
-                    // 发送文件
+                    // 图库文件不发送
                     // @secondary development
-                    window.parent.postMessage({
-                        act: 'change',
-                        params: {
-                            data: data,
-                            title: this.title
-                        }
-                    }, '*')
-				
+                    if (0 === data.indexOf('<mxfile')) {
+                        // 发送文件
+                        window.parent.postMessage({
+                            act: 'change',
+                            params: {
+                                data: data,
+                                title: this.title
+                            }
+                        }, '*')
+                    }
+
 					if (success != null)
 					{
 						success();
