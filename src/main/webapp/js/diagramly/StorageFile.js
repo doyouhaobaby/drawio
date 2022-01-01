@@ -234,7 +234,17 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
 				{
 					this.setModified(this.getShadowModified());
 					this.contentChanged();
-					
+
+                    // 发送文件
+                    // @secondary development
+                    window.parent.postMessage({
+                        act: 'change',
+                        params: {
+                            data: data,
+                            title: this.title
+                        }
+                    }, '*')
+				
 					if (success != null)
 					{
 						success();
@@ -244,16 +254,6 @@ StorageFile.prototype.saveFile = function(title, revision, success, error)
 				this.setShadowModified(false);
 				var data = this.getData();
 
-                // 发送文件
-                // @secondary development
-                window.parent.postMessage({
-                    act: 'change',
-                    params: {
-                        data: data,
-                        title: this.title
-                    }
-                }, '*')
-				
 				this.ui.setDatabaseItem(null, [{
 						title: this.title,
 						size: data.length,

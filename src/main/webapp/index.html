@@ -54,9 +54,6 @@
 			return result;
 		})();
 
-        // @secondary development
-        urlParams['noFileMenu'] = '1';
-		
 		// Forces CDN caches by passing URL parameters via URL hash
 		if (window.location.hash != null && window.location.hash.substring(0, 2) == '#P')
 		{
@@ -236,7 +233,7 @@
         var app = null;
         var mainCompletedCallback = function (ui) {
             app = ui;
-
+            
             window.parent.postMessage({
                 act: 'ready',
                 params: {}
