@@ -4,7 +4,7 @@
     "main": "src/main/webapp/index.html",
     "scripts": {
       "start": "cd src/main/webapp && serve",
-      "build": "cd etc/build && ant",
+      "build": "cd etc/build && source ~/.bash_profile && ant",
       "gen-drawio": "rm -rf public/drawio && cp -r src/main/webapp public/drawio"
     },
     "license": "MIT",
