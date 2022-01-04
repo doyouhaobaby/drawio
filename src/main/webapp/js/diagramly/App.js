@@ -3658,7 +3658,7 @@ App.prototype.showSplash = function(force, editData)
             return;
         }
 
-        const title = editData.title+'.drawio';
+        const title = editData.title;
         var data = editData.data;
         // 图不存在填入空白图像
         if (!data) {
