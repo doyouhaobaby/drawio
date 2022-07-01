@@ -924,10 +924,10 @@
 			}
 		}).label = 'Fork me on GitHub...';
 		
-		editorUi.actions.addAction('downloadDesktop...', function()
-		{
-			editorUi.openLink('https://get.diagrams.net/');
-		});
+		// editorUi.actions.addAction('downloadDesktop...', function()
+		// {
+		// 	editorUi.openLink('https://get.diagrams.net/');
+		// });
 		
 		action = editorUi.actions.addAction('tags', mxUtils.bind(this, function()
 		{
@@ -1541,8 +1541,8 @@
 						editorUi.checkForUpdates();
 					});
 					
-					this.addMenuItems(menu, ['-', 'keyboardShortcuts', 'quickStart',
-						'website', 'support', '-'], parent);
+					this.addMenuItems(menu, ['-', 'keyboardShortcuts', 
+						], parent);
 						
 					if (urlParams['disableUpdate'] != '1')
 					{
@@ -1554,8 +1554,8 @@
 				}
 				else
 				{
-					this.addMenuItems(menu, ['-', 'keyboardShortcuts', 'quickStart',
-						'support', '-', 'forkme', 'downloadDesktop', '-', 'about'], parent);
+					this.addMenuItems(menu, ['-', 'keyboardShortcuts',
+						 ], parent);
 				}
 			}
 			
@@ -3721,10 +3721,10 @@
 			{
 				var item = this.addMenuItem(menu, 'mathematicalTypesetting', parent);
 				
-				if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
-				{
-					this.addLinkToItem(item, 'https://www.diagrams.net/doc/faq/math-typesetting');
-				}
+				// if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
+				// {
+				// 	this.addLinkToItem(item, 'https://www.diagrams.net/doc/faq/math-typesetting');
+				// }
 			}
 	
 			if (EditorUi.isElectronApp)
@@ -3882,10 +3882,10 @@
 					
 					var item = this.addMenuItem(menu, 'synchronize', parent);
 					
-					if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
-					{
-						this.addLinkToItem(item, 'https://www.diagrams.net/doc/faq/synchronize');
-					}
+					// if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
+					// {
+					// 	this.addLinkToItem(item, 'https://www.diagrams.net/doc/faq/synchronize');
+					// }
 					
 					menu.addSeparator(parent);
 				}
@@ -3898,12 +3898,12 @@
 
 				if (isLocalStorage)
 				{
-					this.addSubmenu('openRecent', menu, parent);
+					//this.addSubmenu('openRecent', menu, parent);
 				}
 				
 				if (file != null && file.constructor == DriveFile)
 				{
-					this.addMenuItems(menu, ['new', '-', 'rename', 'makeCopy', 'moveToFolder'], parent);
+					this.addMenuItems(menu, ['new', '-', 'rename',  'moveToFolder'], parent);
 				}
 				else
 				{
@@ -3914,10 +3914,10 @@
 						menu.addSeparator(parent);
 						var item = this.addMenuItem(menu, 'synchronize', parent);
 						
-						if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
-						{
-							this.addLinkToItem(item, 'https://www.diagrams.net/doc/faq/synchronize');
-						}
+						// if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
+						// {
+						// 	this.addLinkToItem(item, 'https://www.diagrams.net/doc/faq/synchronize');
+						// }
 					}
 					
 					this.addMenuItems(menu, ['-', 'save', 'saveAs', '-'], parent);
@@ -3940,7 +3940,7 @@
 					}
 					else
 					{
-						this.addMenuItems(menu, ['makeCopy'], parent);
+						this.addMenuItems(menu, [], parent);
 						
 						if (file != null && file.constructor == OneDriveFile)
 						{
