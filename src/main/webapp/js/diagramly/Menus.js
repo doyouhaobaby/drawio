@@ -3878,7 +3878,7 @@
 						this.addMenuItems(menu, ['exportOptionsDisabled'], parent);
 					}
 					
-					this.addMenuItems(menu, ['save', '-', 'share'], parent);
+					this.addMenuItems(menu, ['save'], parent);
 					
 					var item = this.addMenuItem(menu, 'synchronize', parent);
 					
@@ -3926,7 +3926,7 @@
 						editorUi.getServiceName() == 'draw.io' &&
 						!editorUi.isOfflineApp() && file != null)
 					{
-						this.addMenuItems(menu, ['share', '-'], parent);
+						this.addMenuItems(menu, [], parent);
 					}
 					
 					this.addMenuItems(menu, ['rename'], parent);
