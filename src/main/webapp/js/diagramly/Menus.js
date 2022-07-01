@@ -3894,7 +3894,7 @@
 					this.addMenuItems(menu, ['new'], parent);
 				}
 				
-				this.addSubmenu('openFrom', menu, parent);
+				//this.addSubmenu('openFrom', menu, parent);
 
 				if (isLocalStorage)
 				{
