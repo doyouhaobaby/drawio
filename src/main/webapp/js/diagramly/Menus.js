@@ -3585,7 +3585,7 @@
 		this.put('edit', new Menu(mxUtils.bind(this, function(menu, parent)
 		{
 			this.addMenuItems(menu, ['undo', 'redo', '-', 'cut', 'copy', 'copyAsImage', 'paste',
-				'delete', '-', 'duplicate', '-', 'findReplace', '-', 'editData', 'editTooltip', '-',
+				'delete', '-', 'findReplace', '-', 'editData', 'editTooltip', '-',
 				'editStyle',  'editGeometry', '-', 'edit', '-', 'editLink', 'openLink', '-',
                 'selectVertices', 'selectEdges', 'selectAll', 'selectNone', '-', 'lockUnlock']);
 		})));
