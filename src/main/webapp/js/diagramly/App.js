@@ -4999,7 +4999,8 @@ App.prototype.fileCreated = function(file, libs, replace, done, clibs)
 					done();
 				}
 				
-				window.openWindow(url, null, fn2);
+                window.location.href = url
+				//window.openWindow(url, null, fn2);
 			}
 			else
 			{
