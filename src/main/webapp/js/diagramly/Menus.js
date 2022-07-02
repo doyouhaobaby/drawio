@@ -849,7 +849,7 @@
 		}));
 
 		// Disabled in Safari as operation is not allowed
-		action.visible = Editor.enableNativeCipboard && editorUi.isExportToCanvas() && !mxClient.IS_SF;
+		//action.visible = Editor.enableNativeCipboard && editorUi.isExportToCanvas() && !mxClient.IS_SF;
 		
 		action = editorUi.actions.put('shadowVisible', new Action(mxResources.get('shadow'), function()
 		{
@@ -3880,7 +3880,7 @@
 					
 					this.addMenuItems(menu, ['save'], parent);
 					
-					var item = this.addMenuItem(menu, 'synchronize', parent);
+					//var item = this.addMenuItem(menu, 'synchronize', parent);
 					
 					// if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
 					// {
@@ -3911,8 +3911,8 @@
 						file != null && (file.constructor != LocalFile ||
 						file.fileHandle != null))
 					{	
-						menu.addSeparator(parent);
-						var item = this.addMenuItem(menu, 'synchronize', parent);
+					//	menu.addSeparator(parent);
+					//	var item = this.addMenuItem(menu, 'synchronize', parent);
 						
 						// if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
 						// {
